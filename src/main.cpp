@@ -3,15 +3,16 @@
 
 #include <memory>
 
+#include "../include/rectangle.hpp"
+
 int main(int argc, const char **argv) {
 
-  std::println("Cpp version: {}", __cplusplus);
+  auto ptr1 = std::make_shared<Rectangle>(10, 50);
+  auto ptr2 = ptr1;
 
-  std::println("args number: {}", argc);
-
-  for (int i = 0; i < argc; i++) {
-    std::println("{}: {}", i, argv[i]);
-  }
+  std::println("ptr1 area: {}", ptr1->area());
+  std::println("ptr2 area: {}", ptr2->area());
+  std::println("rectangle references: {}", ptr1.use_count());
 
   return 0;
 }
